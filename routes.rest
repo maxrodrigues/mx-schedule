@@ -1,0 +1,16 @@
+@baseUrl = http://localhost:8888/
+
+
+# REGISTER ROUTE
+POST {{baseUrl}}api/register
+Content-Type: application/json
+
+{
+    "fields": {
+        "name": "Daniela Evelyn Aurora Assunção",
+        "company_name": "Maitê e Elisa Limpeza Ltda",
+        "email": "fiscal@maiteeelisalimpezaltda.com.br",
+        "password": "U^@u!2xZK&",
+        "password_confirmation": "U^@u!2xZK&"
+    }
+}
