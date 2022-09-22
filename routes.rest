@@ -14,3 +14,4 @@ Content-Type: application/json
         "password_confirmation": "U^@u!2xZK&"
     }
 }
+
