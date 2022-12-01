@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\v1\Auth\LoginController;
 use App\Http\Controllers\Api\v1\Auth\RegisterController;
+use App\Http\Controllers\Api\v1\Customer\CreateCustomerController;
 use App\Http\Controllers\Api\v1\Customer\ListCustomerController;
 use App\Http\Controllers\Api\v1\Service\CreateServiceController;
 use Illuminate\Http\Request;
@@ -28,3 +29,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('service/create', CreateServiceController::class);
 
 Route::get('customer/', ListCustomerController::class);
+Route::post('customer/create', CreateCustomerController::class);
