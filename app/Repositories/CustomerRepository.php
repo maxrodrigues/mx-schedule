@@ -7,7 +7,7 @@ use App\Repositories\Contracts\CustomerRepositoryContract;
 
 class CustomerRepository extends BaseRepository implements CustomerRepositoryContract{
 
-    private $model;
+    protected $model;
 
     public function __construct(Customer $model)
     {

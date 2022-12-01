@@ -13,7 +13,7 @@ abstract class BaseRepository implements BaseRepositoryContract{
      *
      * @var mixed
      */
-    private $model;
+    protected $model;
 
     /**
      * __construct
@@ -35,7 +35,7 @@ abstract class BaseRepository implements BaseRepositoryContract{
      */
     public function all(array $columns = ['*'], array $relations = []): Collection
     {
-        return $this->model->with($relations)->get($columns);
+        return $this->model::with($relations)->get($columns);
     }
 
     /**
