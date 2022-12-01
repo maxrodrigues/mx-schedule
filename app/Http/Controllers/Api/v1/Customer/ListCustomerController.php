@@ -12,18 +12,27 @@ use Symfony\Component\HttpFoundation\Response;
 class ListCustomerController extends Controller
 {
     /**
-     * customerService
-     *
-     * @var mixed
+     * @var CustomerServiceContract
      */
     private $customerService;
 
+    /**
+     * __construct
+     *
+     * @param  CustomerServiceContract $customerService
+     * @return void
+     */
     public function __construct(CustomerServiceContract $customerService)
     {
         $this->customerService = $customerService;
     }
 
-    public function __invoke(Request $request): JsonResponse
+    /**
+     * __invoke
+     *
+     * @return JsonResponse
+     */
+    public function __invoke(): JsonResponse
     {
         try {
             $all = $this->customerService->listAllCustomers();
