@@ -199,6 +199,7 @@ return [
          * Project Providers
          */
         App\Providers\AllServicesServiceProvider::class,
+        App\Providers\AllRepositoriesServiceProvider::class,
         App\Providers\RepositoryServiceProvider::class,
         App\Providers\CustomerServiceProvider::class,
 
