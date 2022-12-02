@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use App\Services\Contracts\CustomerServiceContract;
+use App\Services\Contracts\ScheduleServiceContract;
 use App\Services\Contracts\ServiceServiceContract;
 use App\Services\CustomerService;
+use App\Services\ScheduleService;
 use App\Services\ServiceService;
 use Illuminate\Support\ServiceProvider;
 
@@ -19,6 +21,7 @@ class AllServicesServiceProvider extends ServiceProvider
     {
         $this->app->bind(CustomerServiceContract::class, CustomerService::class);
         $this->app->bind(ServiceServiceContract::class, ServiceService::class);
+        $this->app->bind(ScheduleServiceContract::class, ScheduleService::class);
     }
 
     /**
