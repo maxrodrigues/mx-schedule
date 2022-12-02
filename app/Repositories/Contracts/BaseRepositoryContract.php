@@ -32,7 +32,7 @@ interface BaseRepositoryContract {
      * @param  array $appends
      * @return Model | null
      */
-    public function findById(int $modelId, array $columns = ['*'], array $relations = [], array $appends = []): ?Model;
+    public function findById(int $modelId, array $columns = ['*'], array $relations = []): ?Model;
 
     /**
      * Find trashed model by id.

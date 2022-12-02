@@ -57,9 +57,9 @@ abstract class BaseRepository implements BaseRepositoryContract{
      * @param  array $appends
      * @return Model | null
      */
-    public function findById(int $modelId, array $columns = ['*'], array $relations = [], array $appends = []): ?Model
+    public function findById(int $modelId, array $columns = ['*'], array $relations = []): ?Model
     {
-        return $this->model->select($columns)->with($relations)->findOrFail($modelId)->appends($appends);
+        return $this->model->select($columns)->with($relations)->findOrFail($modelId);
     }
 
     /**
