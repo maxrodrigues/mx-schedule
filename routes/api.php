@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\v1\Auth\LoginController;
 use App\Http\Controllers\Api\v1\Auth\RegisterController;
 use App\Http\Controllers\Api\v1\Customer\CreateCustomerController;
 use App\Http\Controllers\Api\v1\Customer\ListCustomerController;
+use App\Http\Controllers\Api\v1\Service\CreateScheduleController;
 use App\Http\Controllers\Api\v1\Service\CreateServiceController;
 use App\Http\Controllers\Api\v1\Service\ListServiceController;
 use Illuminate\Http\Request;
@@ -33,4 +34,7 @@ Route::post('customer/create', CreateCustomerController::class);
 
 // SERVICES
 Route::get('services/', ListServiceController::class);
-Route::post('service/create', CreateServiceController::class);
+Route::post('services/create', CreateServiceController::class);
+
+// SCHEDULES
+Route::post('schdule/', CreateScheduleController::class);
