@@ -2,4 +2,7 @@
 
 namespace App\Services\Contracts;
 
-interface ScheduleServiceContract {}
+interface ScheduleServiceContract
+{
+    public function createNewSchedule(array $payload);
+}
