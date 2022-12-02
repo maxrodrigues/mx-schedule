@@ -37,4 +37,4 @@ Route::get('services/', ListServiceController::class);
 Route::post('services/create', CreateServiceController::class);
 
 // SCHEDULES
-Route::post('schdule/', CreateScheduleController::class);
+Route::post('schedule/', CreateScheduleController::class);
