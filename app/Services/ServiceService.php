@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Repositories\Contracts\ServiceRepositoryContract;
 use App\Services\Contracts\ServiceServiceContract;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 
 class ServiceService implements ServiceServiceContract
 {
@@ -25,5 +26,12 @@ class ServiceService implements ServiceServiceContract
         $all = $this->serviceRepository->all();
 
         return $all;
+    }
+
+    public function createNewService(array $payload): ?Model
+    {
+        $service  = $this->serviceRepository->create($payload);
+
+        return $service;
     }
 }

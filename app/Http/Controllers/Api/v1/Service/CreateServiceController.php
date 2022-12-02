@@ -3,22 +3,27 @@
 namespace App\Http\Controllers\Api\v1\Service;
 
 use App\Http\Controllers\Controller;
+use App\Services\Contracts\ServiceServiceContract;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class CreateServiceController extends Controller
 {
-    public function __construct()
-    {
+    private $serviceService;
 
+    public function __construct(ServiceServiceContract $serviceService)
+    {
+        $this->serviceService = $serviceService;
     }
 
     public function __invoke(Request $request): JsonResponse
     {
         try {
+            $service = $this->serviceService->createNewService($request->all());
+
             return new JsonResponse([
-                'message' => $request->all()
+                'message' => $service
             ], Response::HTTP_OK);
         } catch (\Exception $e) {
 
