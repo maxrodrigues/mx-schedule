@@ -13,19 +13,22 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('schedules', function (Blueprint $table) {
+        Schema::create('companies', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('company_id')->constrained();
-            $table->foreignId('customer_id')->constrained();
-            $table->foreignId('service_id')->constrained();
 
-            $table->date('date');
-            $table->time('start_at');
-            $table->time('finish_at');
+            $table->string('name');
+            $table->string('slug')->unique();
+            $table->string('document');
+            $table->string('phone')->nullable();
+
+            $table->time('start_at')->nullable();
+            $table->time('end_at')->nullable();
+
+            $table->time('start_lunch_at')->nullable();
+            $table->time('end_lunch_at')->nullable();
 
             $table->softDeletes();
             $table->timestamps();
-
         });
     }
 
@@ -36,6 +39,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('schedules');
+        Schema::dropIfExists('companies');
     }
 };
