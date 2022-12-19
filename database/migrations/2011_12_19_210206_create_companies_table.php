@@ -22,10 +22,10 @@ return new class extends Migration
             $table->string('phone')->nullable();
 
             $table->time('start_at')->nullable();
-            $table->time('end_at')->nullable();
+            $table->time('finish_at')->nullable();
 
             $table->time('start_lunch_at')->nullable();
-            $table->time('end_lunch_at')->nullable();
+            $table->time('finish_lunch_at')->nullable();
 
             $table->softDeletes();
             $table->timestamps();
