@@ -18,7 +18,7 @@ return new class extends Migration
 
             $table->string('name');
             $table->string('slug')->unique();
-            $table->string('document');
+            $table->string('document')->nullable();
             $table->string('phone')->nullable();
 
             $table->time('start_at')->nullable();
