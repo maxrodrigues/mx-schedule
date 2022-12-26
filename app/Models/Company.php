@@ -11,4 +11,8 @@ class Company extends Model
 
     protected $fillable = ['name', 'slug', 'document', 'phone', 'start_at', 'finish_at', 'start_lunch_at', 'finish_lunch_at'];
 
+    public function user()
+	{
+		return $this->hasOne(User::class);
+	}
 }
