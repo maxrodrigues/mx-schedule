@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\v1\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Company;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -25,7 +26,7 @@ class RegisterController extends Controller
 			'company_name'            => ['required'],
 		];
 
-		$validator = Validator::make($request->fields, $rules);
+		$validator = Validator::make($request->all(), $rules);
 
 		if ($validator->stopOnFirstFailure()->fails())
 		{
@@ -34,18 +35,18 @@ class RegisterController extends Controller
 
 		try
 		{
+            $company = Company::create([
+				'name' => $request->company_name,
+				'slug' => Str::slug($request->company_name),
+            ]);
+
 			$attr = [
-				'name'     => $request->fields['name'],
-				'email'    => $request->fields['email'],
-				'password' => Hash::make($request->fields['password']),
+				'name'     => $request->name,
+				'email'    => $request->email,
+				'password' => Hash::make($request->password),
 			];
 
-			$user = User::create($attr);
-
-			$user->company()->create([
-				'name' => $request->fields['company_name'],
-				'slug' => Str::slug($request->fields['company_name']),
-			]);
+            $company->user()->create($attr);
 
 			return new JsonResponse(['message' => 'User registered successfully.'], Response::HTTP_CREATED);
 		}
