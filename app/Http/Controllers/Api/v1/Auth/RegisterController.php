@@ -7,6 +7,7 @@ use App\Models\User;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -28,7 +29,7 @@ class RegisterController extends Controller
 
 		if ($validator->stopOnFirstFailure()->fails())
 		{
-			return new JsonResponse(['message' => $validator->errors()], 400);
+			return new JsonResponse(['message' => $validator->errors()], Response::HTTP_BAD_REQUEST);
 		}
 
 		try
@@ -46,11 +47,11 @@ class RegisterController extends Controller
 				'slug' => Str::slug($request->fields['company_name']),
 			]);
 
-			return new JsonResponse(['message' => 'User registered successfully.'], 201);
+			return new JsonResponse(['message' => 'User registered successfully.'], Response::HTTP_CREATED);
 		}
 		catch(Exception $e)
 		{
-			return new JsonResponse(['message' => $e->getMessage()], 400);
+			return new JsonResponse(['message' => $e->getMessage()], Response::HTTP_BAD_GATEWAY);
 		}
 	}
 }
