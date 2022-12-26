@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Repositories\CompanyRepository;
+use App\Repositories\Contracts\CompanyRepositoryContract;
 use App\Repositories\Contracts\ScheduleRepositoryContract;
 use App\Repositories\Contracts\ServiceRepositoryContract;
 use App\Repositories\ScheduleRepository;
@@ -17,6 +19,7 @@ class AllRepositoriesServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->bind(CompanyRepositoryContract::class, CompanyRepository::class);
         $this->app->bind(ServiceRepositoryContract::class, ServiceRepository::class);
         $this->app->bind(ScheduleRepositoryContract::class, ScheduleRepository::class);
     }

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Services\CompanyService;
+use App\Services\Contracts\CompanyServiceContract;
 use App\Services\Contracts\CustomerServiceContract;
 use App\Services\Contracts\ScheduleServiceContract;
 use App\Services\Contracts\ServiceServiceContract;
@@ -19,6 +21,7 @@ class AllServicesServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->bind(CompanyServiceContract::class, CompanyService::class);
         $this->app->bind(CustomerServiceContract::class, CustomerService::class);
         $this->app->bind(ServiceServiceContract::class, ServiceService::class);
         $this->app->bind(ScheduleServiceContract::class, ScheduleService::class);
