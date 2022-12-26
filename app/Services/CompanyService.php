@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Repositories\Contracts\CompanyRepositoryContract;
 use App\Services\Contracts\CompanyServiceContract;
+use Illuminate\Database\Eloquent\Model;
 
 class CompanyService implements CompanyServiceContract
 {
@@ -23,5 +24,10 @@ class CompanyService implements CompanyServiceContract
     public function __construct(CompanyRepositoryContract $companyRepository)
     {
         $this->companyRepository = $companyRepository;
+    }
+
+    public function getCompany($id): ?Model
+    {
+        return $this->companyRepository->findById($id);
     }
 }
