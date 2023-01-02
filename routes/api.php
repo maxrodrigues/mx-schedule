@@ -3,7 +3,7 @@
 use App\Http\Controllers\Api\v1\Auth\LoginController;
 use App\Http\Controllers\Api\v1\Auth\RegisterController;
 use App\Http\Controllers\Api\v1\Company\GetCompanyParamsController;
-use App\Http\Controllers\Api\v1\Company\SetCompanyParamsController;
+use App\Http\Controllers\Api\v1\Company\UpdateCompanyController;
 use App\Http\Controllers\Api\v1\Customer\CreateCustomerController;
 use App\Http\Controllers\Api\v1\Customer\ListCustomerController;
 use App\Http\Controllers\Api\v1\Service\CreateScheduleController;
@@ -42,5 +42,5 @@ Route::post('services/create', CreateServiceController::class);
 Route::post('schedule/', CreateScheduleController::class);
 
 // COMPANY
-Route::post('company/', SetCompanyParamsController::class);
+Route::put('company/{id}', UpdateCompanyController::class);
 Route::get('company/{id}', GetCompanyParamsController::class);
